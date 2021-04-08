@@ -1,15 +1,15 @@
 {
-  "name": "npm",
+  "name": "beidou",
   "version": "1.0.0",
-  "description": "first time try npm",
+  "description": "beidou",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "selfie"
+    "beidou"
   ],
-  "author": "dandan",
+  "author": "dan",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
