@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <style>
+        #issmap {
+            height: 500px;
+            width: 1000px;
+        }
+    </style>
+    <title>北斗-3 M22奥德赛</title>
+</head>
+
+<body>
+    <h1>北斗-3 M22奥德赛</h1>
+    <p>
+        Latitude: <span id='lat'></span><br />
+        Longitude: <span id='lon'></span>
+    </p>
+    <div id="issmap"></div>
+    <script>
+        const mymap = L.map('issmap').setView([51.505, -0.09], 1);
+        const sadIcon = L.icon({
+            iconUrl: 'sadmeme.png',
+            iconSize: [50, 50],
+            iconAnchor: [25, 25],
+        });
+        const marker = L.marker([0, 0],{icon:sadIcon}).addTo(mymap);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{y}/{x}.png', {
+            //互换x y
+			attribution: '感谢Open Street Map, but things are getting messy...',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'your.mapbox.access.token'
+        }).addTo(mymap);
+
+        //const api_url = 'https://api.n2yo.com/rest/v1/satellite/positions/26599/0/0/0/1/&apiKey=DT9TCL-U3JGSF-HHA7R3-4O7J';
+        const api_url='/beidou1';
+		async function getISS() {
+            const response = await fetch(api_url);
+            const data = await response.json();
+            //const { satlatitude, satlongitude } = data;
+			const satlatitude=data.positions[0].satlatitude;
+			const satlongitude=data.positions[0].satlongitude;
+
+            marker.setLatLng([satlatitude, satlongitude]);
+            mymap.setView([satlatitude,satlongitude],13);
+			//原来是6
+
+            document.getElementById('lat').textContent = satlatitude.toFixed(4);
+            document.getElementById('lon').textContent = satlongitude.toFixed(4);
+            console.log(satlatitude);
+            console.log(satlongitude);
+        }
+
+        getISS();
+
+        setInterval(getISS,4000);
+
+    </script>
+</body>
+
+</html>
+
