@@ -1,0 +1,23 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    width: 100%;
+    /* background-color: black;
+    font-family: 'Roboto Mono', monospace; */
+    font-size: 1.03em;
+    line-height: 1.6em;
+}
+
+#issmap {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+#wenzi {
+    top: 1%;
+    right: 1%;
+    position: absolute;
+    z-index: 1;
+}
