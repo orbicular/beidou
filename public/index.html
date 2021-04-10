@@ -10,7 +10,9 @@
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
     <link rel="stylesheet" href="main.css">
-    <title>北斗-3 M22奥德赛</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+    <title>摇摇奥德赛</title>
 </head>
 
 <body>
@@ -23,14 +25,14 @@
     <script>
         const mymap = L.map('issmap').setView([51.505, -0.09], 1);
         const sadIcon = L.icon({
-            iconUrl: '1000.png',
-            iconSize: [60, 50],
-            iconAnchor: [30, 25],
+            iconUrl: 'xiyangyang.png',
+            iconSize: [60*2, 50*2],
+            iconAnchor: [30*2, 25*2],
         });
         const marker = L.marker([0, 0], { icon: sadIcon }).addTo(mymap);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{y}/{x}.png', {
             //互换x y
-            attribution: '感谢Open Street Map, but things are getting messy...',
+            //attribution: '感谢Open Street Map, but things are getting messy...',
             maxZoom: 18,
             id: 'mapbox/streets-v11',
             tileSize: 512,
