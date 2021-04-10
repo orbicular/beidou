@@ -30,7 +30,7 @@
             iconAnchor: [30*2, 25*2],
         });
         const marker = L.marker([0, 0], { icon: sadIcon }).addTo(mymap);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{y}/{x}.png', {
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             //互换x y
             //attribution: '感谢Open Street Map, but things are getting messy...',
             maxZoom: 18,
