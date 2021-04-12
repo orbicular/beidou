@@ -9,6 +9,8 @@ const port=process.env.PORT || 3000;
 app.listen(port, () => console.log(`listening at ${port}`));
 app.use(express.static('public'));
 app.use(express.json({ limit: '1mb' }));
+
+//一个post的例子，实际没用
 app.post('/api', (request, response) => {
     console.log(request.body);
     response.json({
@@ -23,6 +25,6 @@ app.get('/beidou1', async (request, response) => {
     //BEIDOU 3M9 2018.7.29 43581
     const fetch_response = await fetch(api_url);
     const json = await fetch_response.json();
-    console.log(json);
+    //console.log(json);
     response.json(json);
 });
